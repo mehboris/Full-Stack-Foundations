@@ -1,7 +1,7 @@
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
 
-class WebServerHandler(BaseHTTPRequestHandler):
+class WebServerHandler(BaseHTTPRequestHandler): //опис обробника
 
     def do_GET(self):
         if self.path.endswith("/hello"):
@@ -20,12 +20,12 @@ class WebServerHandler(BaseHTTPRequestHandler):
 def main():
     try:
         port = 8080
-        server = HTTPServer(('', port), WebServerHandler)
+        server = HTTPServer(('', port), WebServerHandler) //оголошення серверу((адреса з портом), обробник)
         print "Web Server running on port %s" % port
-        server.serve_forever()
+        server.serve_forever() // запуск серверу
     except KeyboardInterrupt:
         print " ^C entered, stopping web server...."
-        server.socket.close()
+        server.socket.close() // зупинка серверу
 
 if __name__ == '__main__':
     main()
